@@ -2,6 +2,7 @@ import { render, screen } from "@testing-library/react";
 import App from "./App";
 
 describe("App Component", () => {
+  // If you need skip a test use: test.skip()
   test("Render Heading", () => {
     render(<App />);
 

@@ -1,25 +1,22 @@
 import js from "@eslint/js";
+import jestPlugin from "eslint-plugin-jest";
+import react from "eslint-plugin-react";
 import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
 import { defineConfig, globalIgnores } from "eslint/config";
 import globals from "globals";
 import tseslint from "typescript-eslint";
-import jestPlugin from "eslint-plugin-jest";
 
 export default defineConfig([
-  globalIgnores(["dist"]),
+  globalIgnores([
+    "dist",
+    "node_modules",
+    "coverage",
+    "**/*.config.js",
+    "**/*.config.ts"
+  ]),
   {
     files: ["**/*.{ts,tsx}"],
-    extends: [
-      js.configs.recommended,
-      ...tseslint.configs.recommended,
-      reactHooks.configs["recommended-latest"],
-      reactRefresh.configs.vite,
-      jestPlugin.configs.recommended
-    ],
-    plugins: {
-      jest: jestPlugin
-    },
     languageOptions: {
       ecmaVersion: 2020,
       globals: {
@@ -27,7 +24,28 @@ export default defineConfig([
         ...globals.jest
       }
     },
+    plugins: {
+      react: react,
+      jest: jestPlugin
+    },
+    extends: [
+      js.configs.recommended,
+      ...tseslint.configs.recommended,
+      reactHooks.configs["recommended-latest"],
+      reactRefresh.configs.vite
+    ],
+    settings: {
+      react: {
+        version: "detect"
+      }
+    },
     rules: {
+      ...js.configs.recommended.rules,
+      ...tseslint.configs.recommended[0].rules,
+      ...react.configs.recommended.rules, // ✅ En vez de usar en `extends`, extraemos las reglas
+      ...reactHooks.configs["recommended-latest"].rules,
+      ...reactRefresh.configs.vite.rules,
+      ...jestPlugin.configs.recommended.rules,
       "react-hooks/rules-of-hooks": "error", // Rules of hooks
       "react/react-in-jsx-scope": "off", // Rule for allows the use of a TSX or JSX component without the need to import React
       "react/jsx-uses-react": "off",
@@ -36,14 +54,6 @@ export default defineConfig([
       "react/jsx-key": "error", // Rule for using Keys in Child Elements within Loops
       "quotes": [
         // Rule for using double quotes
-        "error",
-        "double",
-        {
-          "avoidEscape": true,
-          "allowTemplateLiterals": true
-        }
-      ],
-      "@typescript-eslint/quotes": [
         "error",
         "double",
         {
@@ -78,17 +88,8 @@ export default defineConfig([
         // Rule to disallow extra semicolons
         "error"
       ],
-      "@typescript-eslint/no-extra-semi": ["error"],
       "semi": [
         // Rule to ensure there is a semicolon at the end
-        "error",
-        "always",
-        {
-          "omitLastInOneLineBlock": true,
-          "omitLastInOneLineClassBody": true
-        }
-      ],
-      "@typescript-eslint/semi": [
         "error",
         "always",
         {
