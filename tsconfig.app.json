@@ -26,5 +26,5 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["src", "test", "@testing-library/jest-dom", "**/*.test.ts", "**/*.test.tsx"]
+  "include": ["src", ".storybook", "test", "@testing-library/jest-dom", "**/*.test.ts", "**/*.test.tsx"]
 }
