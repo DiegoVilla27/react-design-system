@@ -1,5 +1,12 @@
+import { Button } from "./stories/components/atoms/buttons";
+
 function App() {
-  return <h1>Hola Vite + React</h1>;
+  return (
+    <Button
+      label="Button Storybook"
+      size="lg"
+    />
+  );
 }
 
 export default App;
