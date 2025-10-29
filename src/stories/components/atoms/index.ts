@@ -1,2 +1,3 @@
 // Atoms
-export * from "./buttons";
+export * from "./button/Button";
+export * from "./icon/Icon";
