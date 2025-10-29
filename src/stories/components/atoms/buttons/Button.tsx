@@ -6,6 +6,7 @@ export const Button: React.FC<ButtonProps> = ({
   variant = "primary",
   size = "md",
   label,
+  children,
   ...props
 }) => {
   return (
@@ -13,7 +14,7 @@ export const Button: React.FC<ButtonProps> = ({
       className={`btn btn--${variant} btn--${size}`}
       {...props}
     >
-      {label}
+      {label || children}
     </button>
   );
 };

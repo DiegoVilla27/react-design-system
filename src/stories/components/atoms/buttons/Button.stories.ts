@@ -5,53 +5,64 @@ const meta: Meta<typeof Button> = {
   title: "Atoms/Button",
   component: Button,
   tags: ["autodocs"],
+  parameters: {
+    docs: {
+      description: {
+        component: `
+          The **Button** component is an interactive element used to trigger actions.  
+          It supports different sizes, visual variants, and states such as hover, loading, and disabled.
+        `
+      }
+    }
+  },
   argTypes: {
-    onClick: { action: "clicked" }
+    label: {
+      control: "text",
+      description: "Visible text inside the button.",
+      table: {
+        category: "Content"
+      }
+    },
+    variant: {
+      control: { type: "select" },
+      options: ["primary", "secondary", "ghost"],
+      description: "Defines the visual style of the button.",
+      table: {
+        category: "Appearance"
+      }
+    },
+    size: {
+      control: { type: "radio" },
+      options: ["sm", "md", "lg"],
+      description: "Specifies the button size depending on its context of use.",
+      table: {
+        category: "Layout"
+      }
+    },
+    onClick: {
+      action: "clicked",
+      description: "Event triggered when the button is clicked.",
+      table: {
+        category: "Events"
+      }
+    },
+    disabled: {
+      control: "boolean",
+      description: "Disables interaction with the button.",
+      table: {
+        category: "State"
+      }
+    }
   }
 };
 
 export default meta;
-
 type Story = StoryObj<typeof Button>;
 
-export const Primary: Story = {
+export const Default: Story = {
   args: {
-    label: "Primary Button",
-    variant: "primary"
-  }
-};
-
-export const Secondary: Story = {
-  args: {
-    label: "Secondary Button",
-    variant: "secondary"
-  }
-};
-
-export const Ghost: Story = {
-  args: {
-    label: "Ghost Button",
-    variant: "ghost"
-  }
-};
-
-export const Large: Story = {
-  args: {
-    label: "Large Button",
-    size: "lg"
-  }
-};
-
-export const Medium: Story = {
-  args: {
-    label: "Medium Button",
+    label: "Button Default",
+    variant: "primary",
     size: "md"
-  }
-};
-
-export const Small: Story = {
-  args: {
-    label: "Small Button",
-    size: "sm"
   }
 };

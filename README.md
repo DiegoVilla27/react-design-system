@@ -17,6 +17,13 @@ npm run dev
 ```
 for a dev server and navigate to `http://localhost:3000/`. The application will automatically reload if you change any of the source files.
 
+## Development server Storybook 🎨
+
+```bash
+npm run storybook
+```
+for a storybook server and navigate to `http://localhost:6006/`
+
 ## Commits 📝
 
 Commit Structure Guidelines:

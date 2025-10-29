@@ -1,6 +1,7 @@
 import React, { ReactNode, useEffect } from "react";
 import { Theme } from "./Theme.types";
 import themeDefault from "./themeDefault.json";
+import "./global.css";
 
 interface Props {
   theme?: Theme;

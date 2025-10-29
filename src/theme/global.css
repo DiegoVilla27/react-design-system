@@ -1,0 +1,28 @@
+/* Reset global */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Tipografía y colores base */
+html {
+  font-family: var(--font-family-regular);
+  font-size: var(--font-size-md);
+  color: var(--color-textPrimary);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  /* Tablet */
+  html {
+    font-size: var(--font-size-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  /* Mobile */
+  html {
+    font-size: var(--font-size-xs);
+  }
+}

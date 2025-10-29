@@ -1,49 +1,64 @@
 .btn {
   border: none;
-  padding: 0.5rem 1rem;
   cursor: pointer;
-  border-radius: 4px;
   font-family: var(--font-family-regular);
   transition: all 0.2s ease-in-out;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  line-height: 1;
+}
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
+/* BTN PRIMARY */
 .btn--primary {
   background-color: var(--color-primary);
   color: white;
-  &:hover {
-    background-color: var(--color-primaryHover);
-  }
+}
+.btn--primary:hover {
+  background-color: var(--color-primaryHover);
 }
 
+/* BTN SECONDARY */
 .btn--secondary {
   background-color: var(--color-background);
   border: 1px solid var(--color-primary);
   color: var(--color-primary);
-  &:hover {
-    background-color: var(--color-primary);
-    color: var(--color-background);
-  }
+}
+.btn--secondary:hover {
+  background-color: var(--color-primary);
+  color: var(--color-background);
 }
 
+/* BTN GHOST */
 .btn--ghost {
   background: transparent;
   color: var(--color-primary);
-  &:hover {
-    background-color: var(--color-border);
-  }
+}
+.btn--ghost:hover {
+  background-color: var(--color-border);
 }
 
+/* BTN SIZES */
 .btn--sm {
-  font-size: var(--font-size-xs);
-  padding: 4px 8px;
+  height: 2rem;
+  padding: 0 0.75rem;
+  font-size: 0.875rem;
+  border-radius: 4px;
 }
-
 .btn--md {
-  font-size: var(--font-size-sm);
-  padding: 8px 16px;
+  height: 2.5rem;
+  padding: 0 1rem;
+  font-size: 1rem;
+  border-radius: 6px;
 }
-
 .btn--lg {
-  font-size: var(--font-size-md);
-  padding: 12px 20px;
+  height: 3rem;
+  padding: 0 1.25rem;
+  font-size: 1.125rem;
+  border-radius: 8px;
 }
