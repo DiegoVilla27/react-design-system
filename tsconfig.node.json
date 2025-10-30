@@ -1,3 +1,34 @@
+/**
+ * tsconfig.node.json — Node/tooling TypeScript configuration
+ *
+ * Purpose:
+ * - Configuration intended for Node-focused tooling (Vite config, scripts, build tools).
+ * - Provides a strict TypeScript environment for developer tooling without emitting artifacts.
+ *
+ * Key options:
+ * - target: ES2023 — modern Node target for tooling code.
+ * - lib: ["ES2023"] — runtime APIs available when authoring tooling code.
+ * - module: ESNext — module syntax used by modern tooling.
+ * - types: ["node"] — include Node ambient types for tooling.
+ * - noEmit: true — do not produce output files (this config is for type-checking only).
+ *
+ * Bundler / resolution options:
+ * - moduleResolution: "bundler" — resolution strategy compatible with modern bundlers.
+ * - allowImportingTsExtensions: true — allow imports that include .ts/.tsx extensions (useful for some tool configs).
+ * - verbatimModuleSyntax: true — preserve original import/export syntax where possible.
+ * - moduleDetection: "force" — treat files as modules by default.
+ *
+ * Strictness & linting:
+ * - strict, noUnusedLocals, noUnusedParameters, etc. — enforce strong type hygiene in tooling code.
+ *
+ * Include:
+ * - Keeps the scope minimal (vite.config.ts) to avoid accidental processing of unrelated repository files.
+ *
+ * Usage notes / best practices:
+ * - Use this config for editor/CI type-checks of Node/tooling code (e.g., `tsc -p tsconfig.node.json --noEmit`).
+ * - Keep tooling tsconfigs narrow (single file or small set) to prevent API Extractor / dts rollups from scanning repo-level config files.
+ * - If you need to build Node-targeted outputs, create a separate emit-capable tsconfig (noEmit: false / outDir set).
+ */
 {
   "compilerOptions": {
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",

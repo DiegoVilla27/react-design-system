@@ -1,3 +1,24 @@
+/**
+ * tsconfig.json — Project reference manifest
+ *
+ * Purpose:
+ * - Defines a top-level TypeScript project that references per-target tsconfig files.
+ * - Enables `tsc --build` (tsc -b) to operate on multiple referenced projects in the correct order.
+ *
+ * Structure:
+ * - "files": [] — intentionally empty to avoid accidental root-level file inclusion.
+ * - "references": list of project configs that compose this monorepo/project build.
+ *
+ * Usage:
+ * - Run `tsc -b` from the repository root to type-check / build all referenced projects in sequence.
+ * - Useful for separating concerns: e.g. tsconfig.app.json for library/app build and tsconfig.node.json for Node-only tooling/tests.
+ *
+ * Notes / best practices:
+ * - Keep per-target tsconfig files (app, node, tests) focused on their responsibility and with limited "include" globs
+ *   (prefer ["src"] for library builds) so downstream tools (e.g. declaration rollup, API Extractor) do not process unrelated files.
+ * - Avoid emitting declarations twice: coordinate `emitDeclarationOnly` / outDir between `tsc` and bundler plugins (vite-plugin-dts).
+ * - When using project references, ensure each referenced tsconfig has "composite": true if it is intended to be built independently.
+ */
 {
   "files": [],
   "references": [

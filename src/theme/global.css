@@ -5,14 +5,14 @@
   box-sizing: border-box;
 }
 
-/* Tipografía y colores base */
+/* Typography and base colors */
 html {
   font-family: var(--font-family-regular);
   font-size: var(--font-size-md);
   color: var(--color-textPrimary);
 }
 
-/* Responsive */
+/* Responsive base font-size */
 @media (max-width: 768px) {
   /* Tablet */
   html {

@@ -1,3 +1,55 @@
+/**
+ * tsconfig.app.json — Documentation
+ *
+ * Purpose
+ * - TypeScript configuration used for library/application build.
+ * - It is geared towards issuing type declarations and compiling code for bundlers (Vite).
+ *
+ * compilerOptions
+ * - tsBuildInfoFile: Path to incremental build info file. Speeds up repeated builds.
+ * - target: ECMAScript target emitted by the compiler (e.g. "ES2022"). Affects downleveling.
+ * - useDefineForClassFields: Use `define` semantics for class fields to match future JS behavior.
+ * - lib: Runtime libraries included for type checking (DOM + ES features).
+ * - module: Module system used for output. "ESNext" is typical when bundler handles modules.
+ * - types: Ambient type packages to include (jest, vite/client in this project).
+ * - skipLibCheck: Skip type checking of declaration files to speed up compile.
+ * - esModuleInterop: Enable compatibility helpers for `import x from "cjs"`.
+ * - allowSyntheticDefaultImports: Allow default import syntax for modules without default export.
+ * - outDir: Output folder for emitted files (here "dist").
+ * - declaration: Emit .d.ts declaration files alongside JS outputs.
+ *
+ * Bundler-related options
+ * - moduleResolution: "bundler" optimizes resolution semantics for modern bundlers.
+ * - emitDeclarationOnly: When true, compiler emits only declaration files (no JS). Set with care:
+ *     - true: useful if you only want declarations from `tsc` and let a bundler emit JS.
+ *     - false: lets the bundler/plugin handle declaration rollup (recommended when using vite-plugin-dts).
+ * - verbatimModuleSyntax: Preserve original import/export syntax where possible.
+ * - moduleDetection: Controls module detection strategy (e.g. "force" treats files as modules).
+ * - noEmit: When true, disables all emit (useful for type-check-only runs).
+ *
+ * JSX / runtime
+ * - jsx: "react-jsx" enables the automatic JSX runtime (no React import required in every file).
+ *
+ * Lint/strictness
+ * - strict: Enables all strict type-checking options (recommended).
+ * - noUnusedLocals / noUnusedParameters: Catch accidental unused declarations.
+ * - erasableSyntaxOnly: (tooling-specific) allows certain syntactic erasures.
+ * - noFallthroughCasesInSwitch: Prevents unintended switch fallthrough.
+ * - noUncheckedSideEffectImports: Error on imports that may have unchecked side effects.
+ *
+ * include / exclude
+ * - include: Files and folders that TypeScript will parse & type-check. Keep this limited to source and test helpers:
+ *     - include "src" only for build/declaration generation to avoid picking up root config files.
+ * - exclude: Files/folders to ignore (vite.config.ts, commitlint config, dist, node_modules, etc.)
+ *     - Important: Exclude repository config files that API Extractor / declaration rollup may otherwise attempt to process.
+ *
+ * Practical notes / recommendations
+ * - For library builds with vite-plugin-dts:
+ *     - Prefer "emitDeclarationOnly": false (let the plugin run API Extractor / rollup on declarations).
+ *     - Ensure "include" contains only your source (e.g., ["src"]) so API Extractor doesn't encounter unrelated config files.
+ * - Keep "declaration": true and "outDir" pointed to your dist so declaration emit (or plugin) can find all outputs.
+ * - If you need faster iterative type-only checks, use `tsc --noEmit` in CI or editors and reserve full emits for CI/build step.
+ */
 {
   "compilerOptions": {
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",

@@ -2,6 +2,17 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Icon } from "./Icon";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 
+/**
+ * Storybook metadata for the Icon component.
+ *
+ * - title: Organizes the story under "Atoms/Icon" in the Storybook sidebar.
+ * - component: Reference used by Storybook to render the component and infer prop types.
+ * - tags: "autodocs" enables automatic documentation generation.
+ * - parameters:
+ *   - layout: Storybook canvas layout preference ("centered").
+ *   - docs.description.component: Markdown description shown in the Docs tab.
+ * - argTypes: Per-prop controls and documentation for interactive examples.
+ */
 const meta: Meta<typeof Icon> = {
   title: "Atoms/Icon",
   component: Icon,
@@ -34,8 +45,21 @@ const meta: Meta<typeof Icon> = {
 };
 
 export default meta;
+
+/**
+ * Story type alias for the Icon component.
+ *
+ * - Ensures story objects conform to Storybook's StoryObj shape for this component.
+ */
 type Story = StoryObj<typeof Icon>;
 
+/**
+ * Heart
+ *
+ * Default example story for the Icon component.
+ * - Demonstrates the `faHeart` icon at medium size with a custom color.
+ * - Useful for validating rendering, sizing and color APIs in the Docs and Canvas.
+ */
 export const Heart: Story = {
   args: {
     icon: faHeart,
