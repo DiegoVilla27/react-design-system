@@ -1,7 +1,7 @@
 {
   "name": "diegovilla-react-design-system",
   "private": false,
-  "version": "0.1.2",
+  "version": "0.1.4",
   "type": "module",
   "main": "./dist/index.cjs.js",
   "module": "./dist/index.es.js",

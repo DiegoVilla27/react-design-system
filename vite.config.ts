@@ -9,10 +9,10 @@ export default defineConfig({
     react(),
     dts({
       tsconfigPath: "./tsconfig.app.json",
-      entryRoot: "src",
-      outDir: "dist",
-      rollupTypes: true,
-      include: ["src"],
+      // entryRoot: "src",
+      // outDir: "dist",
+      // rollupTypes: true,
+      // include: ["src"],
       insertTypesEntry: true
     })
   ],
