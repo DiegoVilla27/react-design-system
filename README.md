@@ -24,6 +24,78 @@ npm run storybook
 ```
 for a storybook server and navigate to `http://localhost:6006/`
 
+## 🚀 How to Publish the Library to npm
+
+### 🧩 1. Build the package
+Before publishing, make sure your build is clean and production-ready.
+```bash
+npm run build
+```
+> ⚠️ This command should generate the dist/ folder with the compiled files (check your Vite config).
+
+### 🔐 2. Log in to npm
+If this is your first time publishing a package on this machine:
+```bash
+npm login
+```
+> Follow the prompts and enter your npm username, password, and email.
+
+### 🏷️ 3. Check the package name and version
+Open your _package.json_ and confirm the name and version:
+```json
+{
+  "name": "diegovilla-react-design-system",
+  "version": "0.1.0",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.es.js",
+  "types": "dist/index.d.ts",
+  "files": ["dist"],
+  "publishConfig": {
+    "access": "public"
+  }
+}
+```
+> ⚙️ Ensure "files": ["dist"] exists, so npm only uploads your compiled code.
+
+### 🚢 4. Publish to npm
+Once logged in, simply run:
+```bash
+npm publish --access public
+```
+> 💡 If you get a “403 Forbidden” error, verify that the package name is unique on npm and that you’re logged in with the correct user (npm whoami).
+
+### 🔄 5. Update versions for republishing
+Every time you publish a new version, increment the version number in _package.json_, example:
+```bash
+npm version patch   # 0.1.0 → 0.1.1
+npm version minor   # 0.1.0 → 0.2.0
+npm version major   # 0.1.0 → 1.0.0
+```
+Then publish again:
+```bash
+npm publish
+```
+
+### 📦 6. Install it in another project
+You can now install your design system anywhere:
+```bash
+npm install diegovilla-react-design-system
+```
+And use it like this:
+```tsx
+import { Button, Icon } from "diegovilla-react-design-system";
+```
+
+### 🧠 Pro Tip
+If you’re actively developing and want to test changes locally without publishing, use:
+```bash
+npm link
+```
+Then, in your client project:
+```bash
+npm link diegovilla-react-design-system
+```
+
 ## Commits 📝
 
 Commit Structure Guidelines:
