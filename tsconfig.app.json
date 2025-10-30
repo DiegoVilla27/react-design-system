@@ -3,15 +3,21 @@
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
     "target": "ES2022",
     "useDefineForClassFields": true,
-    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "lib": [
+      "ES2022",
+      "DOM",
+      "DOM.Iterable"
+    ],
     "module": "ESNext",
-    "types": ["jest", "vite/client"],
+    "types": [
+      "jest",
+      "vite/client"
+    ],
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "outDir": "dist",
     "declaration": true,
-
     /* Bundler mode */
     "moduleResolution": "bundler",
     "emitDeclarationOnly": true,
@@ -19,7 +25,6 @@
     "moduleDetection": "force",
     "noEmit": false,
     "jsx": "react-jsx",
-
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,
@@ -28,5 +33,18 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["src", ".storybook", "test", "@testing-library/jest-dom", "**/*.test.ts", "**/*.test.tsx"]
+  "include": [
+    "src",
+    ".storybook",
+    "test",
+    "@testing-library/jest-dom",
+    "**/*.test.ts",
+    "**/*.test.tsx"
+  ],
+  "exclude": [
+    "vite.config.ts",
+    "commitlint.config.ts",
+    "dist",
+    "node_modules"
+  ]
 }

@@ -1,8 +1,5 @@
 // Theme
 export * from "./theme";
 
-// Atoms
-export * from "./stories/components/atoms";
-
-// Molecules
-export * from "./stories/components/molecules";
+// Components
+export * from "./stories/components";
