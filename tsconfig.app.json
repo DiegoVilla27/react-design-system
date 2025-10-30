@@ -9,6 +9,7 @@
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
+    "outDir": "dist",
 
     /* Bundler mode */
     "moduleResolution": "bundler",
