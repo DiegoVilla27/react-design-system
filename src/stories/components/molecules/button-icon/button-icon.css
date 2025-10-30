@@ -1,0 +1,18 @@
+.button-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.button-icon--left svg {
+  order: 0;
+}
+
+.button-icon--right svg {
+  order: 2;
+}
+
+.button-icon__label {
+  order: 1;
+}
